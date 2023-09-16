@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageName %> | File Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <main>
+        <p>total number of images found: <%= imageFiles.length %></p>
+        <section class="form-section">
+            <h1>FILE MANAGER</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <!-- <input type="file" name="form_file" id="send_file" accept="image/*" required/> -->
+                <input type="file" name="send_file" id="send_file" accept=".jpg,.jpeg,.png,.webp" required/>
+                <input type="submit" value="upload image">
+            </form>
+        </section>
+        <section class="cards-section">
+            <div class="card-table-div">
+                <table>
+                    <% for( let index = 0; index < imageFiles.length; index++ ) { %>
+                        
+            
+                        <tr>
+                            <td class="stretch-on-mobile">
+                                <div class="image-wrapper">
+                                    <!-- <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="image" id="image"> -->
+                                    <!-- <img src="http://localhost:3000/images/PASCHAL_AKACHUKWU_OGBA-1694734616317-paschalogba-fileManagerProject.jpg" alt="image" id="image"> -->
+                                    <!-- <img src="http://localhost:3000/images/<%= imageFiles[index] %>" alt="image" id="image"> -->
+                                    <img src="/images/<%= imageFiles[index] %>" alt="<%= imageFiles[index] %>" id="image">
+                                </div>
+                                <div class="table-img-text-and-btns-wrapper hide-not-on-mobile">
+                                    <div class="img-name-div">
+                                        <h2><%= imageFiles[index] %></h2>
+                                    </div>
+                                    <div class="img-download-and-delete-btns">
+                                        <div class="delete-btn-wrapper table-card-btn-wrapper">
+                                            <a href="/delete/<%= imageFiles[index] %>" class="deleteBtn-a">
+                                                <h3 class="h3-delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</h3>
+                                            </a>
+                                        </div>
+                                        <div class="download-btn-wrapper table-card-btn-wrapper">
+                                            <a href="/download/<%= imageFiles[index] %>" download>
+                                                <h3 class="h3-download"><i class="fa fa-download" aria-hidden="true"></i> Download</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- for screens above mobile-phone -->
+                            <td class="hide-on-mobile cell-space-for-tablet-and-desktop">
+                                <div class="img-name-div">
+                                    <h2><%= imageFiles[index] %></h2>
+                                </div>
+                            </td>
+                            <td class="hide-on-mobile">
+                                <div class="table-card-btn-wrapper a">
+                                    <a href="/delete/<%= imageFiles[index] %>" class="deleteBtn-a">
+                                        <h3 class="h3-delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</h3>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="hide-on-mobile">
+                                <div class="table-card-btn-wrapper">
+                                    <a href="/download/<%= imageFiles[index] %>" download>
+                                        <h3 class="h3-download"><i class="fa fa-download" aria-hidden="true"></i> Download</h3>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    <% } %>
+                    
+                                        
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // in-line javascript goes here
+        const deleteButtons = document.querySelectorAll(".deleteBtn");
+        deleteButtons.forEach((delete_btn)=>{
+            delete_btn.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const fileName = e.target.getAttribute('href').split('/').pop();
+                if(confirm(`Are you sure to delete ${fileName}?`)){
+                    console.log("clicked on " + fileName);
+                    fetch(`/delete/${fileName}`, {method: 'DELETE'})
+                    //  .then(()=>{window.location='/';})
+                    //   window.location=`${'/delete/'}/${fileName}`;
+                    //   location.reload()
+                    //   alert(`${fileName} has been deleted`);
+                    .then(()=>{e.target.closest('tr').remove()})
+                }}
+            );
+        });
+    </script>
+</body>
+</html>

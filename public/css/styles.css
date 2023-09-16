@@ -1,0 +1,223 @@
+:root{
+    --blue1: #092651;
+    --blue2: #0B3F71;
+    --blue3: #086099;
+    --blue4: #699AB3;
+    --blue5: #B5CFE1;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blue1);
+}
+
+
+.hide-on-mobile{
+    display: none;
+}
+
+main{
+    /* outline: 2px dotted crimson; */
+    background-color: transparent;
+    margin: 0 1em;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/*********************************
+          the app name  
+**********************************/
+ main section h1{
+    text-align: center;
+    letter-spacing: 0.4ems;
+    word-spacing: 0.2em;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+ }
+
+
+/*********************************
+       the form styling 
+*********************************/
+ main section form{
+    /* outline: 2px dashed teal; */
+    padding: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+ }
+ main section form input{
+    font-size: 1.2rem;
+ }
+ main section form input[type='file']{
+    /* outline: 2px solid pink; */
+    padding: 12px 4px;
+    background-color: #f2f2f2;
+    color: #444;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+ }
+ main section form input[type='submit']{
+    /* outline: 2px solid red; */
+    padding: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08rem;
+    text-transform: capitalize;
+    color: white;
+    background-color: var(--blue3);
+    border: none;
+    border-radius: 5px;
+ }
+
+ /*************************************
+          the Card styling 
+ *************************************/
+ main .cards-section{
+    /* outline: 4px dotted crimson; */
+    display: flex;
+    flex-direction: column;
+    padding: 4px 2px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+ }
+ tr{
+    box-shadow: 0 3px 6px #f2f2f2;
+    margin-top: 4px;
+ }
+ tr .stretch-on-mobile{
+    /* outline: 2px dashed var(--blue2); */
+    position: relative;
+    width: 100vw;
+    height: 300px;
+    padding: 0;
+ }
+ tr td .image-wrapper{
+    /* outline: 4px dotted gold; */
+    width: 100%;
+    height: 60%; /*<---- set here to px value*/
+    margin-bottom: 12px;
+ }
+ tr td .image-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+ }
+ tr td .table-img-text-and-btns-wrapper{
+    /* outline: 2px dashed red; */
+    padding: 0 8px;
+    justify-content: space-between;
+ }
+ .table-img-text-and-btns-wrapper div h2{
+    /* outline: 2px solid var(--blue2); */
+    font-family: monospace;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow :hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+ }
+ tr td div .img-download-and-delete-btns{
+    /* outline: 4px solid var(--blue4); */
+    display:  flex;
+    justify-content: space-evenly;
+    margin-top: 32px;
+ }
+ .table-card-btn-wrapper a{
+    text-decoration: none;
+ }
+.h3-delete, .fa-trash{
+     color:crimson ;
+ }
+.h3-download, .fa-download{
+    color: var(--blue3);
+}
+
+
+
+
+ /***************************************************
+ *                  MEDIA QUERY
+ ***************************************************/
+ 
+ /* for tablets */
+ @media screen and (min-width: 768px){
+
+   main .form-section{
+      margin: 0 auto;
+      width: 70vw;
+   }
+
+    table{
+      /* outline: 2px solid gold; */
+      width: 95vw;
+    }
+
+    table tr{
+      /* outline: 2px solid var(--blue4); */
+      margin-bottom: 1rem;
+    }
+
+    .hide-not-on-mobile{
+        display: none; 
+    }
+
+    td.hide-on-mobile{
+        display: table-cell;
+        /* width: 24%; */
+    }
+    td.cell-space-for-tablet-and-desktop{
+      width: 24%;
+      padding-right: 1rem;
+    }
+
+
+    table tr .stretch-on-mobile{
+      width: 18vw;
+      height: 140px;
+    }
+
+    td.img-name-div{
+      width: 10vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    td div h2{
+      /* outline: 2px solid red; */
+      padding: 0 4px 0 12px;
+      font-family: monospace;
+    }
+
+    tr td div .img-download-and-delete-btns{
+      display: unset;
+    }
+ }
+
+
+
+ /* for desktop */
+ @media screen and (min-width: 900px){
+
+   main .cards-section::-webkit-scrollbar{
+      width: 0;
+   }
+
+   main .form-section{
+      margin: 0 auto 1rem;
+      width: 72%;
+   }
+
+   main, table{
+      margin: 0 auto;
+      width: 60vw;
+   }
+
+   table tr .stretch-on-mobile{
+      width: 10vw;
+   }
+ }
+ 
