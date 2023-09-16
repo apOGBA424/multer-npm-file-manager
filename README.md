@@ -3,14 +3,15 @@
 A nodejs' Multer package project made to perform file upload, download, and delete CRUD operations.
 
 ## USAGE 
-To clone this project, copy and run the code below on your machine.
+To clone this project, copy and run the code below on your machine's terminal.
 ```bash
-https://github.com/apOGBA424/multer-npm-file-manager.git
+git clone https://github.com/apOGBA424/multer-npm-file-manager.git
 ```
-Extract the file and run  <code>cd enter-path-here</code>, to switch to the project directory then, copy and run 
+Extract the file and run  <code>cd \<project folder name\></code>, to switch to the project directory then, copy and run 
 ```bash
 npm install 
 ```
+to automatically install all the packages used in this project.
 
 ### Required Packages
 - Express

@@ -81,22 +81,22 @@
 
     <script>
         // in-line javascript goes here
-        const deleteButtons = document.querySelectorAll(".deleteBtn");
-        deleteButtons.forEach((delete_btn)=>{
-            delete_btn.addEventListener('click', (e)=>{
-                e.preventDefault();
-                const fileName = e.target.getAttribute('href').split('/').pop();
-                if(confirm(`Are you sure to delete ${fileName}?`)){
-                    console.log("clicked on " + fileName);
-                    fetch(`/delete/${fileName}`, {method: 'DELETE'})
-                    //  .then(()=>{window.location='/';})
-                    //   window.location=`${'/delete/'}/${fileName}`;
-                    //   location.reload()
-                    //   alert(`${fileName} has been deleted`);
-                    .then(()=>{e.target.closest('tr').remove()})
-                }}
-            );
-        });
+        // const deleteButtons = document.querySelectorAll(".deleteBtn");
+        // deleteButtons.forEach((delete_btn)=>{
+        //     delete_btn.addEventListener('click', (e)=>{
+        //         e.preventDefault();
+        //         const fileName = e.target.getAttribute('href').split('/').pop();
+        //         if(confirm(`Are you sure to delete ${fileName}?`)){
+        //             console.log("clicked on " + fileName);
+        //             fetch(`/delete/${fileName}`, {method: 'DELETE'})
+        //             //  .then(()=>{window.location='/';})
+        //             //   window.location=`${'/delete/'}/${fileName}`;
+        //             //   location.reload()
+        //             //   alert(`${fileName} has been deleted`);
+        //             .then(()=>{e.target.closest('tr').remove()})
+        //         }}
+        //     );
+        // });
     </script>
 </body>
 </html>

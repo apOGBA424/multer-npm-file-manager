@@ -131,7 +131,6 @@ app.get('/download/:fileName', (req, res)=>{
     // then pass the filePath to download method of res object to
     // download the file
     res.download(filePath, (err)=>{
-
         if (err) {
             // send Error Message
             res.sendStatus(404).send('file not found');
